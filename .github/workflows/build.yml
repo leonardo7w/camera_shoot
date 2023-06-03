@@ -12,7 +12,6 @@ jobs:
     env:
       SONAR_SCANNER_VERSION: 4.8.0.2856 # Find the latest version in the "Linux" link on this page:
                                         # https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Value stored in a Github secret
     steps:
       - uses: actions/checkout@v2
         with:
@@ -45,4 +44,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }} # Put the name of your token here
         run: |
           # Set the property "sonar.cfamily.compile-commands" to the compilation database file
-          sonar-scanner --define sonar.host.url="${{ env.SONAR_HOST_URL }}" --define sonar.cfamily.compile-commands=build/compile_commands.json
+          sonar-scanner --define sonar.cfamily.compile-commands=build/compile_commands.json
